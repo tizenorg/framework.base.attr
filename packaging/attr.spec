@@ -3,6 +3,7 @@ Name: attr
 Version: 2.4.44
 Release: 7.2
 Source: http://download.savannah.gnu.org/releases/attr/attr-%{version}.src.tar.gz
+Source1001: packaging/attr.manifest 
 Patch0: 01-578386-Makefile.patch
 Patch1: 02-fix_memory_leak_in_attr_copy_action.patch
 Patch2: 03-pull_in_string.h.patch
@@ -62,6 +63,7 @@ you'll also want to install attr.
 %patch6 -p1
 
 %build
+cp %{SOURCE1001} .
 #export DIST_ROOT=%{buildroot}
 export INSTALL_USER="root"
 export INSTALL_GROUP="root"
@@ -90,13 +92,16 @@ rm -f %{buildroot}%{_libdir}/libattr.{la,a}
 
 
 %files
+%manifest attr.manifest
 %{_bindir}/*
 %{_prefix}/share/locale/*/LC_MESSAGES/attr.mo
 
 %files -n libattr
+%manifest attr.manifest
 /lib/libattr.so.*
 
 %files -n libattr-devel
+%manifest attr.manifest
 /lib/libattr.so
 %{_libdir}/libattr.so
 %{_includedir}/attr/*.h
