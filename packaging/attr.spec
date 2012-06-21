@@ -2,7 +2,7 @@ Summary: Utilities for managing filesystem extended attributes
 Name: attr
 Version: 2.4.44
 Release: 7.2
-Source: http://download.savannah.gnu.org/releases/attr/attr-%{version}.src.tar.gz
+Source: http://download.savannah.gnu.org/releases/attr/attr-%{version}.tar.gz
 Source1001: packaging/attr.manifest 
 Patch0: 01-578386-Makefile.patch
 Patch1: 02-fix_memory_leak_in_attr_copy_action.patch
