@@ -73,6 +73,8 @@ make -C po attr.pot
 
 %install
 rm -rf $RPM_BUILD_ROOT
+mkdir -p %{buildroot}/usr/share/license
+cp %{_builddir}/%{name}-%{version}/doc/COPYING %{buildroot}/usr/share/license/%{name}
 
 DIST_ROOT=%{buildroot}; export DIST_ROOT; make -C . install
 DIST_ROOT=%{buildroot}; export DIST_ROOT; make -C . install-dev
@@ -88,10 +90,10 @@ rm -f %{buildroot}%{_libdir}/libattr.{la,a}
 
 %postun -n libattr -p /sbin/ldconfig
 
-
 %files
 %{_bindir}/*
 %{_prefix}/share/locale/*/LC_MESSAGES/attr.mo
+/usr/share/license/%{name}
 
 %files -n libattr
 /lib/libattr.so.*
