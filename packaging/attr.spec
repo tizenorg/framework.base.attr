@@ -1,4 +1,3 @@
-#sbs-git:slp/pkgs/a/attr attr 1:2.4.44-2 34721715cb3b54585ba4d554e923b29925fdaee5
 Summary: Utilities for managing filesystem extended attributes
 Name: attr
 Version: 2.4.44
@@ -70,9 +69,15 @@ cp %{SOURCE1001} .
 #export DIST_ROOT=%{buildroot}
 export INSTALL_USER="root"
 export INSTALL_GROUP="root"
-
+%configure \
+ 	--prefix=/ \
+ 	--exec-prefix=/ \
+ 	--sbindir=/bin \
+ 	--bindir=/usr/bin \
+ 	--libdir=/%{_lib} \
+ 	--libexecdir=/%{_libdir}
 make configure
-make default
+make default %{?_smp_mflags}
 rm -f po/attr.pot
 make -C po attr.pot
 
@@ -83,8 +88,8 @@ DIST_ROOT=%{buildroot}; export DIST_ROOT; make -C . install
 DIST_ROOT=%{buildroot}; export DIST_ROOT; make -C . install-dev
 DIST_ROOT=%{buildroot}; export DIST_ROOT; make -C . install-lib
 
-chmod +x %{buildroot}/lib/libattr.so.*
-rm -f %{buildroot}/lib/libattr.{la,a}
+chmod +x %{buildroot}/%{_lib}/libattr.so.*
+rm -f %{buildroot}/%{_lib}/libattr.{la,a}
 rm -f %{buildroot}%{_libdir}/libattr.{la,a}
 
 mkdir -p %{buildroot}/%{_datadir}/license
@@ -99,17 +104,20 @@ cp -f COPYING.LGPLv2.1 %{buildroot}/%{_datadir}/license/lib%{name}
 
 
 %files
+%defattr(-,root,root,-)
 %manifest attr.manifest
 %{_bindir}/*
 %{_prefix}/share/locale/*/LC_MESSAGES/attr.mo
 %{_datadir}/license/%{name}
 
 %files -n libattr
-/lib/libattr.so.*
+%defattr(-,root,root,-)
+/%{_lib}/libattr.so.*
 %{_datadir}/license/lib%{name}
 
 %files -n libattr-devel
-/lib/libattr.so
+%defattr(-,root,root,-)
+/%{_lib}/libattr.so
 %{_libdir}/libattr.so
 %{_includedir}/attr/*.h
 
