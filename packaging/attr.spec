@@ -1,7 +1,8 @@
 Summary: Utilities for managing filesystem extended attributes
 Name: attr
 Version: 2.4.44
-Release: 7.2
+Release: %{?release_prefix:%{release_prefix}.}7.11.%{?dist}%{!?dist:tizen}
+VCS:     framework/base/attr#Z910F_PROTEX_0625-2-gf85ff3a6295796e796f7a57e540601bd2ca3bd86
 Source: http://download.savannah.gnu.org/releases/attr/attr-%{version}.src.tar.gz
 Source1001: attr.manifest
 Patch0: 01-578386-Makefile.patch
@@ -13,7 +14,7 @@ Patch5: 07-fix_thinko_in_restore.patch
 Patch6: attr-2.4.44-build.patch
 Patch7: 08-getfattr_encode_NULs_properly_with_--encoding=text.patch
 
-License: GPL-2.0+
+License: GPLv2+
 URL: http://savannah.nongnu.org/projects/attr/
 Group: System/Base
 BuildRequires: autoconf
@@ -27,7 +28,7 @@ the extended attribute system calls and library functions.
 %package -n libattr
 Summary: Utilities for managing filesystem extended attributes
 Group: System/Libraries
-License: LGPL-2.1+
+License: LGPLv2+
 
 %description -n libattr
 Utilities for managing filesystem extended attributes
@@ -35,7 +36,7 @@ Utilities for managing filesystem extended attributes
 %package -n libattr-devel
 Summary: Extended attribute static libraries and headers
 Group: Development/Libraries
-License: LGPL-2.1+
+License: LGPLv2+
 Requires: libattr = %{version}-%{release}
 
 %description -n libattr-devel
@@ -121,3 +122,90 @@ cp -f COPYING.LGPLv2.1 %{buildroot}/%{_datadir}/license/lib%{name}
 %{_libdir}/libattr.so
 %{_includedir}/attr/*.h
 
+%changelog
+* Sat Jun 28 2014 SLP SCM <slpsystem.m@samsung.com> - None 
+- PROJECT: framework/base/attr
+- COMMIT_ID: f85ff3a6295796e796f7a57e540601bd2ca3bd86
+- BRANCH: master
+- PATCHSET_REVISION: f85ff3a6295796e796f7a57e540601bd2ca3bd86
+- CHANGE_OWNER: \"UkJung Kim\" <ujkim@samsung.com>
+- PATCHSET_UPLOADER: \"UkJung Kim\" <ujkim@samsung.com>
+- CHANGE_URL: http://slp-info.sec.samsung.net/gerrit/534362
+- PATCHSET_REVISION: f85ff3a6295796e796f7a57e540601bd2ca3bd86
+- TAGGER: SLP SCM <slpsystem.m@samsung.com>
+- Gerrit patchset approval info:
+- UkJung Kim <ujkim@samsung.com> Verified : 1
+- Newton Lee <newton.lee@samsung.com> Code-Review : 2
+- Newton Lee <newton.lee@samsung.com> Verified : 1
+- CHANGE_SUBJECT: Merged x86_64 support to master
+- Merged x86_64 support to master
+* Sat Feb 22 2014 Seongho Jeong <sh33.jeong@samsung.com> - None 
+- PROJECT: framework/base/attr
+- COMMIT_ID: 13d9d50e83d4d20dae9547f19f7bf3b1c86b3513
+- PATCHSET_REVISION: 13d9d50e83d4d20dae9547f19f7bf3b1c86b3513
+- CHANGE_OWNER: \"Seongho Jeong\" <sh33.jeong@samsung.com>
+- PATCHSET_UPLOADER: \"Seongho Jeong\" <sh33.jeong@samsung.com>
+- CHANGE_URL: http://slp-info.sec.samsung.net/gerrit/428510
+- PATCHSET_REVISION: 13d9d50e83d4d20dae9547f19f7bf3b1c86b3513
+- TAGGER: Seongho Jeong <sh33.jeong@samsung.com>
+- Gerrit patchset approval info:
+- Newton Lee <newton.lee@samsung.com> Code-Review : 2
+- Seongho Jeong <sh33.jeong@samsung.com> Verified : 1
+- CHANGE_SUBJECT: Add correct license document
+- Add correct license document
+* Mon Dec  9 2013 Yang YongHyun <alex.yang@samsung.com> - None 
+- PROJECT: framework/base/attr
+- COMMIT_ID: de5388ef886248d249cd3d489a61b36dfbee2029
+- PATCHSET_REVISION: de5388ef886248d249cd3d489a61b36dfbee2029
+- CHANGE_OWNER: \"Yang YongHyun\" <alex.yang@samsung.com>
+- PATCHSET_UPLOADER: \"Yang YongHyun\" <alex.yang@samsung.com>
+- CHANGE_URL: http://slp-info.sec.samsung.net/gerrit/362406
+- PATCHSET_REVISION: de5388ef886248d249cd3d489a61b36dfbee2029
+- TAGGER: Yang YongHyun <alex.yang@samsung.com>
+- Gerrit patchset approval info:
+- Jinwoo Nam <jwoo.nam@samsung.com> Code Review : 2
+- Kidong Kim <kd0228.kim@samsung.com> Code Review : 1
+- Kidong Kim <kd0228.kim@samsung.com> Verified : 1
+- CHANGE_SUBJECT: Merge branch 'devel/arch/master'
+- Merge branch 'devel/arch/master'
+* Fri Nov 29 2013 Jinwoo nam <jwoo.nam@samsung.com> - None 
+- PROJECT: framework/base/attr
+- COMMIT_ID: 72250257133c201fc77fcca39c552900f4cf75aa
+- PATCHSET_REVISION: 72250257133c201fc77fcca39c552900f4cf75aa
+- CHANGE_OWNER: \"Jinwoo Nam\" <jwoo.nam@samsung.com>
+- PATCHSET_UPLOADER: \"Jinwoo Nam\" <jwoo.nam@samsung.com>
+- CHANGE_URL: http://slp-info.sec.samsung.net/gerrit/351680
+- PATCHSET_REVISION: 72250257133c201fc77fcca39c552900f4cf75aa
+- TAGGER: Jinwoo nam <jwoo.nam@samsung.com>
+- Gerrit patchset approval info:
+- Kidong Kim <kd0228.kim@samsung.com> Code Review : 2
+- Kidong Kim <kd0228.kim@samsung.com> Verified : 1
+- CHANGE_SUBJECT: Merge branch 'devel/arch/master' add Smack manifest
+- Merge branch 'devel/arch/master' add Smack manifest
+* Mon Sep 16 2013 UkJung Kim <ujkim@samsung.com> - submit/trunk/20121022.040552 
+- PROJECT: framework/base/attr
+- COMMIT_ID: 35dd84ba1b1f0701fe76589585894a569c308171
+- PATCHSET_REVISION: 35dd84ba1b1f0701fe76589585894a569c308171
+- CHANGE_OWNER: \"UkJung Kim\" <ujkim@samsung.com>
+- PATCHSET_UPLOADER: \"UkJung Kim\" <ujkim@samsung.com>
+- CHANGE_URL: http://slp-info.sec.samsung.net/gerrit/103767
+- PATCHSET_REVISION: 35dd84ba1b1f0701fe76589585894a569c308171
+- TAGGER: UkJung Kim <ujkim@samsung.com>
+- Gerrit patchset approval info:
+- UkJung Kim <ujkim@samsung.com> Verified : 1
+- Newton Lee <newton.lee@samsung.com> Code Review : 2
+- CHANGE_SUBJECT: Git OBS Sync
+- [Version] 2.4.44
+- [Project] GT-I8800
+- [Title] Initial commit
+- [BinType] PDA
+- [Customer] Open
+- [Issue#] N/A
+- [Problem] N/A
+- [Cause] N/A
+- [Solution]
+- [Team] SCM
+- [Developer] UkJung Kim <ujkim@samsung.com>
+- [Request] N/A
+- [Horizontal expansion] N/A
+- [SCMRequest] N/A
